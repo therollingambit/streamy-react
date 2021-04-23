@@ -1,1 +1,1 @@
-A react video stream app using redux and OAuth2
+A react video stream app using redux, OAuth2, redux-form, json-server
