@@ -15,7 +15,12 @@ class StreamList extends React.Component {
           <Link className="ui button primary" to={`/streams/edit/${stream.id}`}>
             Edit
           </Link>
-          <Link to={`/streams/delete/${stream.id}`} className="ui button negative">Delete</Link>
+          <Link
+            to={`/streams/delete/${stream.id}`}
+            className="ui button negative"
+          >
+            Delete
+          </Link>
         </div>
       );
     }
@@ -23,12 +28,15 @@ class StreamList extends React.Component {
 
   renderList() {
     return this.props.streams.map((stream) => {
+      if (this.props.currentUserId !== stream.userId) return null; //only show streams by current user
       return (
         <div className="item" key={stream.id}>
           {this.renderAdmin(stream)}
           <i className="large middle aligned icon camera" />
           <div className="content">
-            <Link to={`/streams/${stream.id}`} className='header'>{stream.title}</Link>
+            <Link to={`/streams/${stream.id}`} className="header">
+              {stream.title}
+            </Link>
             <div className="description">{stream.description}</div>
           </div>
         </div>
